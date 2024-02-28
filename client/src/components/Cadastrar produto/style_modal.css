@@ -1,0 +1,155 @@
+
+.modal-section{
+    background-color: rgba(0, 0, 0, 0.91);
+    position: absolute;
+    top: 0;
+    height: 95vh;
+    width: 97.68vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: #000;
+    padding: 20px;
+    z-index: 1000;
+    scroll-behavior: smooth;
+}
+
+.modal-container{
+    height: 50vh;
+    width: 30vw;
+    background-color: gainsboro;
+    display: grid;
+    place-items: center;
+    border-radius: 5px;
+
+}
+
+.modal-title{
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 4px;
+}
+
+.close-modal-button{
+    cursor: pointer;
+    position: absolute;
+    top: 26%;
+    right: 35.5%;    
+    transition-duration: .2s;
+    background-color: white;
+    border-radius: 50%;
+    width: 1.5vw;
+    height: 3vh;
+    display: grid;
+    place-items: center;
+    transition-duration: .2s;
+    border: .22vh solid black;
+    fill: red;
+}
+
+.close-modal-icon{
+    transition-duration: .2s;
+}
+
+.close-modal-icon:hover{
+    scale:  1.1;
+}
+
+.input-modal{
+    background-color: ghostwhite;
+    border: none;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.378);
+    outline: none;
+    width: 80%;
+    height: 4.5vh;
+    padding: 5px 0 0 15px;
+    border-radius: 4px;
+}
+
+.label-for-image{
+    font-size: 18px;
+    font-family: "Bebas Neue", sans-serif;
+    border-right: 2px solid black;
+    padding-right: 5px;
+    text-align: center;
+
+}
+
+.product-imagem{
+    width: 80%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+
+.modal-button{
+    padding: 10px;
+    background-color: rgb(40, 124, 40);
+    border: none;
+    outline: none;
+    color: ghostwhite;
+    border-radius: 5px;
+    width: 12vw;
+    transition-duration: .2s;
+    cursor: pointer;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+
+.modal-button:hover{
+    letter-spacing: 3px;
+}
+
+.modal-button-register{
+    align-self: center;
+}
+
+.upload-image-container{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.go-back-page{
+    cursor: pointer;
+    position: absolute;
+    top: 26%;
+    left: 35.5%;    
+    transition-duration: .2s;
+    background-color: white;
+    border-radius: 50%;
+    width: 1.5vw;
+    height: 3.2vh;
+    display: grid;
+    place-items: center;
+    transition-duration: .2s;
+    fill: green;
+}
+.go-back-page:hover{
+    scale: 1.05;
+}
+
+.modal-product-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.product-image-label{
+    font-size: 25px;
+    font-family: "Bebas Neue", sans-serif;
+    border-right: 3px solid black;
+    padding-right: 10px;
+    width: 5vw;
+    text-align: center;
+}
+
+progress{
+    height: 4vh;
+    transition-duration: .2s;
+}

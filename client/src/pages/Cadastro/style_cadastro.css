@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: arial;
+}
+
+.cadastro-section{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../assets/login-bg.jpg');
+    background-size: cover;
+}
+
+.cadastro-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 20% ;
+    height: 50%;
+    border: 2px solid ghostwhite;
+    padding: 20px;
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+}
+
+.nomes{
+    display: flex;
+    gap: 10px;
+    width: 80%;
+}
+.cadastro-option{
+    color: ghostwhite;
+    text-decoration: none;
+}
+
+.cadastro-option-link{
+    color:#bebdbd;
+    transition-duration: .3s;
+    padding-bottom: 2px;
+    text-decoration: none;
+}
+
+.cadastro-option-link:hover{
+    border-bottom: 1px solid ghostwhite;
+}
+
+.cadastro-btn{
+    height: 2.8rem;
+    width: 12vw;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid ghostwhite;
+    color: ghostwhite;
+    letter-spacing: 2px;
+    font-size: 16px;
+    transition-duration: .3s;
+    cursor: pointer;
+    margin-top: 10%;
+}
+
+.cadastro-btn:hover{
+    letter-spacing: 5px;
+}
+
+.eye-icon {
+    position: absolute;
+    fill: ghostwhite;
+    right: 5%;
+    top: 40%;
+    font-size: 1.2vw;
+    cursor: pointer;
+}

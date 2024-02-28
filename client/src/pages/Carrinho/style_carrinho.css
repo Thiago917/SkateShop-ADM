@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+}   
+
+.carrinho-section{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carrinho-container{
+    height: 70vh;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}

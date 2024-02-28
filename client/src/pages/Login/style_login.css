@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: arial;
+}
+
+.login-section{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../assets/login-bg.jpg');
+    background-size: cover;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 20% ;
+    height: 50%;
+    border: 2px solid ghostwhite;
+    padding: 20px;
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+}
+
+.form__group {
+    position: relative;
+    padding: 20px 0 0;
+    width: 100%;
+    max-width: 16vw;
+  }
+  
+  .form__field {
+    font-family: inherit;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid ghostwhite;
+    outline: 0;
+    font-size: 17px;
+    color: ghostwhite;
+    padding: 7px 0;
+    background: transparent;
+    transition: 0.2s;
+  }
+  
+  .form__field::placeholder {
+    color: transparent;
+}
+
+.form__field:placeholder-shown ~ .form__label {
+    font-size: 17px;
+    font-family: Arial;
+    font-weight: bold;
+    cursor: text;
+    top: 20px;
+    left: 10px;
+    letter-spacing: 2px;
+  }
+  
+  .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: ghostwhite;
+    pointer-events: none;
+    padding-left: 1px;  
+  }
+  
+  .form__field:focus {
+    padding-bottom: 3px;
+    font-weight: 700;
+    border-width: 2px;
+    border-image-slice: 1;
+  }
+  
+  .form__field:focus ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: #797878;
+    font-weight: 400;
+  }
+  
+  /* reset input */
+  .form__field:required, .form__field:invalid {
+    box-shadow: none;
+  }
+
+  .login-option{
+    color: ghostwhite;
+    text-decoration: none;
+  }
+
+  .login-option-link{
+    color:#bebdbd;
+    transition-duration: .3s;
+    padding-bottom: 2px;
+  }
+  
+  .login-option-link:hover{
+    border-bottom: 1px solid ghostwhite;
+  }
+  
+  .login-option-forget{
+    margin-left: 40%;
+    font-size: 15px;
+  }
+
+  .button{
+    padding-bottom: 20%;
+  }
+
+  .login-btn{
+    height: 4.5vh;
+    width: 12vw;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid ghostwhite;
+    color: ghostwhite;
+    letter-spacing: 2px;
+    font-size: 16px;
+    transition-duration: .3s;
+    cursor: pointer;
+  }
+
+  .login-btn:hover{
+    letter-spacing: 5px;
+  }

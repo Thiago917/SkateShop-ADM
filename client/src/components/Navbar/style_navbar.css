@@ -1,0 +1,41 @@
+.navbar{
+    height: 15vh;
+    width: 100vw;
+    background-color: black;
+    display: flex;
+    color: ghostwhite;  
+    align-items: center;
+    justify-content: center;
+    gap: 40%;
+}
+
+.li{
+    font-weight: bold;
+    letter-spacing: 5px;
+    padding-bottom: 2px;
+    transition-duration: .3s;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    font-family: "Protest Guerrilla", sans-serif;
+}
+a{
+    color: #fff;
+}
+.li:hover{
+    letter-spacing: 7px;
+    border-bottom: 1px solid ghostwhite;    
+}
+
+.logo-navbar{
+    height: 12vh;
+    width: 6vw;
+    border-radius: 20%;
+    transition-duration: .3s;
+    cursor: pointer;
+    position: absolute;
+}
+
+.logo-navbar:hover{
+    scale: 1.05;
+    box-shadow: 1px 0 50px rgba(248, 248, 255, 0.541);
+}
