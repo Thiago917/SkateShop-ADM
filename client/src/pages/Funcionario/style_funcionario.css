@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+.funcionario-page-section{
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.funcionario-page-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 80%;
+    background-color: rgba(33, 33, 33, 0.258);
+    border-radius: 5px;
+    padding: 15px;
+    gap: 20px;
+    overflow-x: auto;
+}
+

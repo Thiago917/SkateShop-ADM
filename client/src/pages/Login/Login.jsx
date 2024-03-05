@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from 'react-router-dom'
 import Axios from 'axios'
-
+import Swal from 'sweetalert2'
 import './style_login.css'
 
 const Login = () => {
@@ -23,8 +23,14 @@ const [value, setValue] = useState()
     }).then((response) => {
       console.log(response.data)
       if(response.data === 'Login efetuado com sucesso!'){
-        alert(response.data)
-        window.location='/store'
+        Swal.fire({
+          title: "Login efetuado com sucesso!",
+          text: "Você será redirecionado para a página desejada em instantes...",
+          background: '#262729',
+          color: '#f1f1f1',
+          icon: "success"
+        });
+        setTimeout(()=>{window.location='/store'}, 3000);
       }
       else[
         alert(response.data)

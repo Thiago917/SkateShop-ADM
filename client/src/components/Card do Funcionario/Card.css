@@ -1,0 +1,51 @@
+.funcionario-container{
+    height: 20vh;
+    width: 25vw ; 
+    background-color: lightgray;
+    box-shadow: 10px 12px 50px rgba(0, 0, 0, 0.598);
+    padding: 20px;
+    display: flex;
+    border-radius: 15px;
+    border: 2px solid black;
+    gap: 20px;
+}   
+
+.funcionario-content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.funcionario-nome{
+    font-family: "Bebas Neue", sans-serif !important;
+    letter-spacing: 3px;
+}
+
+.funcionario-label{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    display: flex;
+    gap: 5px;
+    width: 100%;
+}
+
+.funcionario-data{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+}
+
+.crud-edit-funcionario{
+    position: fixed;
+    display: grid;
+    gap: 5px;
+    margin-left: 24.5%;
+    top: 46%;
+}
+
+.edit-product-icon{
+    cursor: pointer;
+}

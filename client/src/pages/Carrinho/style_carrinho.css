@@ -12,7 +12,7 @@
 }
 .carrinho-container{
     height: 70vh;
-    background-color: blue;
+    /* background-color: blue; */
     display: flex;
     flex-direction: column;
     justify-content: center;

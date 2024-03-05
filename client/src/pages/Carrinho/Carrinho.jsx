@@ -8,14 +8,17 @@ import { useParams } from 'react-router-dom'
 import './style_carrinho.css'
 
 const Produto = () => {
+
+    const {id} = useParams()
     
     const [ produto, setProduto ] = useState()
     
     useEffect(() =>{
-        Axios.get('http://localhost:5174/getProduct').then((response) => {
+        Axios.get(`http://localhost:5174/carrinho/${id}`).then((response) => {
             setProduto(response.data)
+            console.log(response)
         })
-    }, [])
+    })
 
   return (
     <>
@@ -26,9 +29,10 @@ const Produto = () => {
                     return (
                         <div className="carrinho-content" key={item.idproduto}>
                             <div className="carrinho-imagem">
-                                <img src={item.imagem} alt={item.nome} />
+                                <img src=''/>
                             </div>
                         <p className='carrinho-info'>{item.nome}</p>
+                        <p className='carrinho-info'>{item.preco}</p>
                         </div>
                     )
                 })}

@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import { GrClose } from "react-icons/gr";
 import { SlArrowLeftCircle } from "react-icons/sl";
 import Axios from 'axios'
+import Swal from 'sweetalert2';
 
 //firebase
 import { uploadBytesResumable, ref, getDownloadURL } from 'firebase/storage'
@@ -11,7 +12,7 @@ import { storage } from '../../firebase'
 //estilização
 import './style_modal.css'
 
-const RegisterProduct = ({isOpen, setIsOpen, setImageProduct, setGetImage, step, setStep}) => {
+const RegisterProduct = ({isOpen, setIsOpen, setImageProduct, setGetImage, step, setStep, id}) => {
   
 
   const [ value, setValue] = useState()
@@ -64,21 +65,31 @@ const RegisterProduct = ({isOpen, setIsOpen, setImageProduct, setGetImage, step,
     setImageProduct(imgURL)
   }
 
-  const changeStep = () => {
+  const changeStep = () => {  
     setStep('produto-image')
   }
   
   const handleEditProduct = () =>{
     Axios.put('http://localhost:5174/editProduct', {
+      id: id,
       nome: value.nome,
       preco: value.preco,
       categoria: value.categoria,
       quantidade: value.quantidade,
     }).then((response) => {
-      setIsOpen(false)
-      setStep('produto-info')
-      alert(response.data)
+      if(response.data === 'true'){
+        Swal.fire({
+          title: "Sucesso!",
+          text: "Dados do produto alterados com sucesso",
+          background: '#262729',
+          color: '#f1f1f1',
+          icon: "success"
+        });
+        setIsOpen(false)
+        setStep('produto-info')
+      }
     })
+
   }
   if(isOpen){ 
   return (
@@ -115,14 +126,14 @@ const RegisterProduct = ({isOpen, setIsOpen, setImageProduct, setGetImage, step,
         )}
 
         {step === 'produto-info-edit-version' && (
-           <>
-            <input type="text" placeholder='Nome do produto' name='nome' className='input-modal' onChange={handleGetValues}/>
-            <input type="text" placeholder='Preço do produto (00,00)' name='preco' className='input-modal' onChange={handleGetValues}/>
-            <input type="text" placeholder='Categoria do produto' name='categoria' className='input-modal' onChange={handleGetValues}/>
-            <input type="text" placeholder='Quantidade a ser cadastrada' name='quantidade' className='input-modal' onChange={handleGetValues}/>
-            <button className='modal-button' onClick={handleEditProduct}>CONFIRMAR ALTERAÇÃO</button>
-           </>
-        )}
+            <>
+              <input type="text" placeholder='Nome do produto' name='nome' className='input-modal' onChange={handleGetValues} />
+             <input type="text" placeholder='Preço do produto (00,00)' name='preco' className='input-modal' onChange={handleGetValues} />
+             <input type="text" placeholder='Categoria do produto' name='categoria' className='input-modal' onChange={handleGetValues}/>
+             <input type="text" placeholder='Quantidade a ser cadastrada' name='quantidade' className='input-modal' onChange={handleGetValues}/>
+             <button className='modal-button' onClick={handleEditProduct}>CONFIRMAR ALTERAÇÃO</button>
+            </>
+          )}
           </div>
     </div>
     
