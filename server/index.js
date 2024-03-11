@@ -4,6 +4,7 @@ const mysql = require('mysql2')
 const cors = require('cors')
 const bcrypt = require('bcrypt')
 const saltRounds = 10
+const port = 5170
 app.use(cors())
 app.use(express())
 var bodyParser = require('body-parser')
@@ -27,24 +28,26 @@ const db = mysql.createPool({
 app.post('/register', (req, res) => {
     const { nome } = req.body
     const { sobrenome } = req.body
+    const { cargo } = req.body
     const { email } = req.body
     const { senha } = req.body
 
     //validação se o usuário já foi cadastrado
-    db.query("SELECT * FROM cliente WHERE email = ?", [email], (err, result) => {
+    db.query("SELECT * FROM funcionario WHERE email = ?", [email], (err, result) => {
         if(err) res.send(err)
 
     //cadastro do novo usuário
         if(result.length == 0){
             bcrypt.hash(senha, saltRounds, (erro, hash) =>{
-                db.query("INSERT INTO cliente (nome, sobrenome, email, senha) VALUES (?, ?, ?, ?)", [nome, sobrenome, email, hash], (err, result) => {
+                db.query("INSERT INTO funcionario (nome, sobrenome, cargo, email, senha) VALUES (?, ?, ?, ?, ?)", [nome, sobrenome, cargo, email, hash], (err, result) => {
                     if(err){
                         res.send(err)
                     }
                     res.send({msg: 'Cadastrado com sucesso!'})
                 })
             })
-        }else{
+        } 
+        else {
             res.send({msg: 'Usuário já cadastrado'})
         }
     })
@@ -56,7 +59,7 @@ app.post('/login', (req, res) =>{
     const {senha} = req.body
 
     //Verificação se o email está correto
-    db.query("SELECT * FROM cliente WHERE email = ?", [email], (err, result) =>{
+    db.query("SELECT * FROM funcionario WHERE email = ?", [email], (err, result) =>{
         if(err){
             res.send(err)
         }
@@ -100,7 +103,7 @@ app.post('/postProduct', (req, res) =>{
                     res.send(err)
                 }
                 else{
-                    res.send('Produto cadastrado com sucesso!')
+                    res.send('true')
                 }
             })
         }
@@ -112,7 +115,7 @@ app.post('/postProduct', (req, res) =>{
 })
 
 app.get('/getProduct', (req, res) =>{
-
+    //Traz todos os produtos cadastrados no banco de dados para o meu front-end
     db.query("SELECT * FROM produto", (err, result) =>{
         if(err) res.send(err)
         else res.send(result)
@@ -120,39 +123,106 @@ app.get('/getProduct', (req, res) =>{
 
 })
 
-app.delete('/deleteProduct/:id', (req, res) =>{
-    const {id} = req.params
+app.delete('/deleteProduct/:id', (req, res) => {
+    //id do produto que será deletado
+    const {id} = req.params;
 
-    db.query('DELETE FROM produto WHERE idproduto = ?', [id], (err, result) =>{
+    //Deleta todas as informações do produto de acordo com o id dele
+    db.query("DELETE FROM produto WHERE idproduto = ?", [id], (err, result) => {
         if(err) console.log(err)
-        if(result.lenght > 0){
-            res.send('Algo não ocorreu como deveria')
+        
+        if(result){
+            //mensagem caso a função de deletar funcione corretamente
+            res.send('Produto deletado com sucesso!')
         }
         else{
-            res.send('Produto deletado com sucesso!')
+            //mensagem caso a função de deletar não funcione
+            res.send('Algo não ocorreu como deveria')
         }
     })
 })
 
 app.put('/editProduct', (req, res) => {
+    //Declaração das variáveis que recebe os valores digitados pelo usuário no front-end
+    const {id} = req.body
     const {nome} = req.body
     const {preco} = req.body
     const {categoria} = req.body
     const {quantidade} = req.body
 
-    db.query("UPDATE produto SET nome = ?, preco = ?, categoria = ?, quantidade = ?", [nome, preco, categoria, quantidade], (err, result) => {
+    //Edita todos as informações do produto de acordo com o que o usuário digitar
+    db.query("UPDATE produto SET nome = ?, preco = ?, categoria = ?, quantidade = ? WHERE idproduto = ?", [nome, preco, categoria, quantidade, parseInt(id)], (err, result) => {
         if(err) console.log(err)
         
-        if(result.length > 0 ){
-            res.send('Algo não ocorreu como deveria')
+        if(result){
+            //mensagem caso a função de editar funcione corretamente
+            res.send('true')
         }
         else{
-            res.send('Alteração concluída com sucesso!')
+            //mensagem caso a função de editar não funcione
+            res.send('false')
+        }
+    })
+})
+
+app.get('/carrinho/:id', (req, res) => {
+    const {id} = req.params
+    
+    db.query("SELECT * FROM produto WHERE idproduto = ?", [id], (err, result) => {
+        if(err) console.log(err)
+        else res.send(result)
+    })
+})
+
+app.get('/getFuncionario', (req, res) => {
+    
+    db.query("SELECT * FROM funcionario", (err, result) => {
+        if(err) console.log(err)
+        else res.send(result)
+    })
+})
+
+
+app.delete('/deleteFuncionario/:id', (req, res) => {
+    const {id} = req.params;
+
+    db.query("DELETE FROM funcionario WHERE idFunc = ?", [id], (err, result) => {
+        if(err) console.log(err)
+
+        if(result){
+            res.send('Funcionário deletado com êxito!')
+        }
+        else{
+            res.send('Algo não ocorreu como deveria')
+        }
+    })
+})
+
+app.put('/editFuncData', (req, res) => {
+    const {id} = req.body
+    const {nome} = req.body
+    const {sobrenome} = req.body
+    const {email} = req.body
+    const {cargo} = req.body
+    
+    db.query("UPDATE funcionario SET nome = ?, sobrenome = ?, email = ?, cargo = ? WHERE idFunc = ?", [nome, sobrenome, email, cargo, id], (err, result) => {
+        if(err) console.log(err)
+
+        if(result){
+            res.send('true')
+        }
+        else{
+            res.send('false')
         }
     })
 })
 
 
-app.listen(5174, () =>{
-    console.log('rodando servidor na porta: ' + 5174)
+
+
+
+
+//Declara a porta do servidor e inicia o servidor
+app.listen(port, () =>{
+    console.log('rodando servidor na porta: ' + port)
 })

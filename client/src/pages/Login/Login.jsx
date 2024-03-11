@@ -17,7 +17,7 @@ const [value, setValue] = useState()
   }
 
   const handleClickLogin = () =>{
-    Axios.post('http://localhost:5174/login', {
+    Axios.post('http://localhost:5170/login', {
       email: value.email,
       senha: value.senha,
     }).then((response) => {
@@ -30,7 +30,7 @@ const [value, setValue] = useState()
           color: '#f1f1f1',
           icon: "success"
         });
-        setTimeout(()=>{window.location='/store'}, 3000);
+        setTimeout(()=>{window.location='/store'}, 1000);
       }
       else[
         alert(response.data)

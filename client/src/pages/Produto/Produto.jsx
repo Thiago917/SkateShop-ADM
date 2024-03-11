@@ -10,7 +10,7 @@ export const Produto = () => {
     const [produto, setProdutos ] = useState()
 
     useEffect(() => {
-        Axios.get('http://localhost:5174/getProduct').then((response) => {
+        Axios.get('http://localhost:5170/getProduct').then((response) => {
             setProdutos(response.data)
             console.log(response.data)
         })

@@ -3,8 +3,8 @@
     background-color: rgba(0, 0, 0, 0.91);
     position: absolute;
     top: 0;
-    height: 95vh;
-    width: 97.68vw;
+    height: 95.8vh;
+    width: 97.9vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,7 +90,7 @@
     outline: none;
     color: ghostwhite;
     border-radius: 5px;
-    width: 12vw;
+    width: 12.5vw;
     transition-duration: .2s;
     cursor: pointer;
     font-family: "Bebas Neue", sans-serif;

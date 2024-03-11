@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { FaAngleDoubleLeft, FaAngleDoubleRight, FaPen } from 'react-icons/fa'
 import Axios from 'axios'
 import { GrClose } from 'react-icons/gr'
-import { useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 //components
@@ -25,11 +24,12 @@ export const Store = () => {
 
   const [ getImage, setGetImage ] = useState()
 
-  const [ imageProduct, setImageProduct] = useState()
-
   const [ produtctId, setProductId ] = useState()
   
   const [ step, setStep ] = useState('produto-info')
+
+  const [ images, setImages ] = useState([])
+
 
     const leftClick = (e) =>{
       e.preventDefault()
@@ -43,16 +43,15 @@ export const Store = () => {
     }
 
     useEffect(() => {
-      Axios.get('http://localhost:5174/getProduct').then((response) => {
+      Axios.get('http://localhost:5170/getProduct').then((response) => {
         setProduto(response.data)
       })
     })
     
-   
     return (
     <>
       <Navbar />
-        <RegisterProduct isOpen={isOpen} setIsOpen={setIsOpen} setImageProduct={setImageProduct} setGetImage={setGetImage} step={step} setStep={setStep} id={produtctId} produto={produto}/>
+        <RegisterProduct isOpen={isOpen} setIsOpen={setIsOpen} step={step} setStep={setStep} id={produtctId} produto={produto} resgateImagem={setGetImage} setImages={setImages}/>
       <button className='product-register-button' onClick={() => setIsOpen(!isOpen)} >CADASTRAR PRODUTO</button>
       <div className="loja-container">
           <h1 className='store-title'>PRODUTOS</h1>
@@ -68,7 +67,15 @@ export const Store = () => {
           <div className="carousel" key={item.idproduto} >
             <div className="product-container"  key={item.idproduto}>
               <div className="product-image"  key={item.idproduto}>
-              <img src={imageProduct} alt="" className='product-image' onClick={() => window.location=`/produto/${item.idproduto}`}/>
+                {images && images.map((storage) => {
+                  if(item.id === storage.id){
+                    return(
+                      <>
+                    <img src={storage.imagem} alt="" className='product-image' onClick={() => window.location=`/produto/${item.idproduto}`}/>
+                    </>
+                  )
+                }
+                })}
               <div className="functional-icons">
 
                 <GrClose className='delete-product-icon' onClick={() => {
@@ -91,7 +98,7 @@ export const Store = () => {
                       color: '#f1f1f1'
                     }).then((result) => {
                       if (result.isConfirmed) {
-                        Axios.delete(`http://localhost:5174/deleteProduct/${item.idproduto}`).then((response) => {
+                        Axios.delete(`http://localhost:5170/deleteProduct/${item.idproduto}`).then((response) => {
                           //
                         })
                         swalWithBootstrapButtons.fire({

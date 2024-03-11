@@ -14,7 +14,7 @@ const Produto = () => {
     const [ produto, setProduto ] = useState()
     
     useEffect(() =>{
-        Axios.get(`http://localhost:5174/carrinho/${id}`).then((response) => {
+        Axios.get(`http://localhost:5170/carrinho/${id}`).then((response) => {
             setProduto(response.data)
             console.log(response)
         })

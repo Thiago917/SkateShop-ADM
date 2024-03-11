@@ -21,8 +21,8 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
-    width: 20% ;
-    height: 50%;
+    width: 22% ;
+    height: 60%;
     border: 2px solid ghostwhite;
     padding: 20px;
     border-radius: 5px;
@@ -32,7 +32,7 @@
 .nomes{
     display: flex;
     gap: 40px;
-    width: 90%;
+    width: 82%;
 }
 .cadastro-option{
     color: ghostwhite;
@@ -51,7 +51,7 @@
 }
 
 .cadastro-btn{
-    min-height: 4.5vh !important;
+    height: 6vh;
     width: 12vw;
     background-color: transparent;
     outline: none;

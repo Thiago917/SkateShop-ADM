@@ -13,7 +13,7 @@ export const Funcionario = () => {
   const [ funcionario, setFuncionario ] = useState()
 
   useEffect(() => {
-    Axios.get('http://localhost:5174/getFuncionario').then((response) => {
+    Axios.get('http://localhost:5170/getFuncionario').then((response) => {
       setFuncionario(response.data)
     })
   })
@@ -39,7 +39,7 @@ export const Funcionario = () => {
           {funcionario && funcionario.map((item, index) => {
             return(
               <>
-              <Card nome={item.nome} sobrenome={item.sobrenome} cargo={item.cargo} email={item.email} id={item.idFunc} senha={item.senha} index={index}/>
+              <Card nome={item.nome} sobrenome={item.sobrenome} cargo={item.cargo} email={item.email} id={item.idFunc} senha={item.senha} index={index} funcData={funcionario} key={index}/>
               </>
             )
           })}

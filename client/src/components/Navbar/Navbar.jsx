@@ -6,11 +6,16 @@ import './style_navbar.css'
 
 export const Navbar = () => {
   return (
+    <>
     <nav className='navbar'>
         <Link to='/store'><p className='li'>LOJA</p></Link>
         <img src={logo} alt="" className='logo-navbar' />
-        <p className="li" onClick={() => window.location='/funcionario'}>FUNCIONARIOS</p>
+        <p className="li" onClick={() => window.location='/funcionario'}>FUNCIONÁRIOS</p>
     </nav>
+        <button>
+        <Link to='/'><span className="box"> SAIR </span></Link>
+        </button>
+    </>
   )
 }
 

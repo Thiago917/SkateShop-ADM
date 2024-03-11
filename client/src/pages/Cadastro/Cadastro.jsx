@@ -23,7 +23,7 @@ const Cadastro = () => {
         alert('As senhas são diferentes')
     }
     else{
-    Axios.post('http://localhost:5174/register', {
+    Axios.post('http://localhost:5170/register', {
       nome: value.nome,
       sobrenome: value.sobrenome,
       cargo:   value.cargo,
@@ -40,7 +40,7 @@ const Cadastro = () => {
               color: '#f1f1f1',
               icon: "success"
             });
-            setTimeout(()=>{window.location='/'}, 3000);
+            setTimeout(()=>{window.location='/'}, 1000);
           }
           else{
             alert(response.data.msg)

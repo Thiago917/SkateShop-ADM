@@ -4,12 +4,12 @@
 }
 
 .edit-funcionario-modal{
-    background-color: rgba(0, 0, 0, 0.91);
-    position: absolute;
-    top: -650%;
-    right: -2520%;
-    height: 95vh;
-    width: 97.68vw;
+    background-color: rgba(0, 0, 0, 0.81);
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,6 +17,7 @@
     color: #000;
     padding: 20px;
     scroll-behavior: smooth;
+    z-index: 0.5;
 }
 
 .edit-funcionario-form{
@@ -40,8 +41,8 @@
     padding: 2px;
     border: 2px solid black;
     position: fixed;
-    left: 64.7%;
-    top: 30.5%;
+    left: 66%;
+    top: 28%;
     cursor: pointer;
     transition-duration: .2s;
 }

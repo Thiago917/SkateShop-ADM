@@ -42,7 +42,7 @@
     border: none;
     border-bottom: 2px solid ghostwhite;
     outline: 0;
-    font-size: 17px;
+    font-size: 15px;
     color: ghostwhite;
     padding: 7px 0;
     background: transparent;
@@ -54,7 +54,7 @@
 }
 
 .form__field:placeholder-shown ~ .form__label {
-    font-size: 17px;
+    font-size: 14px;
     font-family: Arial;
     font-weight: bold;
     cursor: text;
