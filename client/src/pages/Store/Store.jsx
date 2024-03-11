@@ -1,6 +1,7 @@
 //libs
 import React, { useEffect, useRef, useState } from 'react'
 import { FaAngleDoubleLeft, FaAngleDoubleRight, FaPen } from 'react-icons/fa'
+import { BiInfoCircle } from "react-icons/bi";
 import Axios from 'axios'
 import { GrClose } from 'react-icons/gr'
 import Swal from 'sweetalert2'
@@ -67,15 +68,7 @@ export const Store = () => {
           <div className="carousel" key={item.idproduto} >
             <div className="product-container"  key={item.idproduto}>
               <div className="product-image"  key={item.idproduto}>
-                {images && images.map((storage) => {
-                  if(item.id === storage.id){
-                    return(
-                      <>
-                    <img src={storage.imagem} alt="" className='product-image' onClick={() => window.location=`/produto/${item.idproduto}`}/>
-                    </>
-                  )
-                }
-                })}
+                <img src={item.data} alt="" className='product-image' onClick={() => window.location=`/produto/${item.idproduto}`}/>
               <div className="functional-icons">
 
                 <GrClose className='delete-product-icon' onClick={() => {
@@ -128,7 +121,12 @@ export const Store = () => {
                   setStep('produto-info-edit-version')
                   setProductId(item.idproduto)
                 }}/>
-                
+                <BiInfoCircle className='info-product-icon' onClick={() => {
+                  setIsOpen(true)
+                  setStep('produto-data')
+                  setProductId(item.idproduto)
+                }}/>
+
               </div>
               </div>
               <p className='product-name product-content' onClick={() => console.log(item.idproduto)}>{item.nome}</p>

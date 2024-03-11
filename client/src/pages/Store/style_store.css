@@ -141,29 +141,30 @@
     margin-left: 19%;
 }
 
-.delete-product-icon{
-    background-color: red;
+.delete-product-icon, .edit-product-icon, .info-product-icon{
     width: 1.2vw;
     height: 2.5vh;
     border-radius: 50%;
     padding: 2px;
-    cursor: pointer;
+    opacity: .7;
     transition-duration: .2s;
-    opacity: .6;
 }
 
-.delete-product-icon:hover, .edit-product-icon:hover{
+.delete-product-icon{
+    background-color: red;
+}
+.edit-product-icon{
+    background-color: rgb(216, 208, 97);
+}
+
+.info-product-icon{
+    background-color: rgb(53, 150, 195);
+}
+
+.delete-product-icon:hover, .edit-product-icon:hover, .info-product-icon:hover{
     opacity: 1;
     scale: 1.05;
 }
 
-.edit-product-icon{
-    width: 1.2vw;
-    height: 2.5vh;
-    border-radius: 50%;
-    background-color: rgb(97, 216, 97);
-    
-    padding: 2px;
-    opacity: .6;
-    transition-duration: .2s;
-}
+
+

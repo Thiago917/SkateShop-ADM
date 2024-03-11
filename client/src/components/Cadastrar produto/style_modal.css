@@ -153,3 +153,8 @@ progress{
     height: 4vh;
     transition-duration: .2s;
 }
+.req-imagem-produto-step{
+    height: 40vh;
+    filter: drop-shadow(10px 0px 30px rgba(0, 0, 0, 0.854));
+}
+

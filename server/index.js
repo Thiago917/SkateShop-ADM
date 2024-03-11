@@ -91,6 +91,7 @@ app.post('/postProduct', (req, res) =>{
     const {preco} = req.body
     const {categoria} = req.body
     const {quantidade} = req.body
+    const {data} = req.body
 
     //Verifica se o produto já foi cadastrado
     db.query("SELECT * FROM produto WHERE nome = ? and categoria = ?", [nome, categoria], (err, result) => {
@@ -98,7 +99,7 @@ app.post('/postProduct', (req, res) =>{
 
     //cadastro do novo produto
         if(result.length == 0){
-            db.query("INSERT INTO produto (nome, preco, categoria, quantidade) VALUES (?, ?, ?, ?)", [nome, preco, categoria, quantidade], (err, result) => {
+            db.query("INSERT INTO produto (nome, preco, categoria, quantidade, data) VALUES (?, ?, ?, ?, ?)", [nome, preco, categoria, quantidade, data], (err, result) => {
                 if(err){
                     res.send(err)
                 }
